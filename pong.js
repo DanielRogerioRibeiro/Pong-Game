@@ -17,7 +17,9 @@ function draw() {
   mostraBolinha();
   movimentaBolinha();
   verificaColisaoBorda();
+  mostraRaquete();
 }
+
 
 function mostraBolinha(){
   circle(xBolinha, yBolinha, diametro);
@@ -37,4 +39,17 @@ function verificaColisaoBorda(){
      yBolinha - raio < 0){
     velocidadeYBolinha *= -1;
   }
+}
+
+//criando raquete
+// Função mostraRaquete();
+
+//variáveis da raquete
+let xRaquete = 5;
+let yRaquete = 150;
+let raqueteComprimento = 10;
+let raqueteAltura = 90;
+
+function mostraRaquete() {
+  rect(xRaquete, yRaquete, raqueteComprimento, raqueteAltura);
 }
