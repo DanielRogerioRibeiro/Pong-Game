@@ -18,6 +18,7 @@ function draw() {
   movimentaBolinha();
   verificaColisaoBorda();
   mostraRaquete();
+  movimentaMinhaRaquete();
 }
 
 
@@ -52,4 +53,13 @@ let raqueteAltura = 90;
 
 function mostraRaquete() {
   rect(xRaquete, yRaquete, raqueteComprimento, raqueteAltura);
+}
+
+function movimentaMinhaRaquete() {
+  if (keyIsDown(UP_ARROW)) {
+      yRaquete -= 10;
+  }
+  if (keyIsDown(DOWN_ARROW)) {
+      yRaquete += 10;
+  }
 }
