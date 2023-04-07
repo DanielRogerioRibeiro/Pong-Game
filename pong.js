@@ -1,3 +1,6 @@
+//****Jogo Pong****
+
+
 //variáveis da bolinha
 let xBolinha = 300;
 let yBolinha = 200;
@@ -19,6 +22,7 @@ function draw() {
   verificaColisaoBorda();
   mostraRaquete();
   movimentaMinhaRaquete();
+  verificaColisaoRaquete();
 }
 
 
@@ -43,7 +47,7 @@ function verificaColisaoBorda(){
 }
 
 //criando raquete
-// Função mostraRaquete();
+// Função para mostrar minha Raquete;
 
 //variáveis da raquete
 let xRaquete = 5;
@@ -55,6 +59,7 @@ function mostraRaquete() {
   rect(xRaquete, yRaquete, raqueteComprimento, raqueteAltura);
 }
 
+// Função para movimentar minha Raquete;
 function movimentaMinhaRaquete() {
   if (keyIsDown(UP_ARROW)) {
       yRaquete -= 10;
@@ -62,4 +67,10 @@ function movimentaMinhaRaquete() {
   if (keyIsDown(DOWN_ARROW)) {
       yRaquete += 10;
   }
+}
+  // Função para verificar a colisão com a minha Raquete;
+  function verificaColisaoRaquete() {
+    if (xBolinha - raio < xRaquete + raqueteComprimento) {
+        velocidadeXBolinha *= -1;
+    }
 }
