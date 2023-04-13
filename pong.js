@@ -28,8 +28,20 @@ let colidiu = false;
 let meusPontos = 0;
 let pontosDoOponente = 0;
 
+//sons do jogo
+let raquetada;
+let ponto;
+let trilha;
+
+function preload() {
+    trilha = loadSound("/sons/trilha.mp3");
+    ponto = loadSound("/sons/ponto.mp3");
+    raquetada = loadSound("/sons/raquetada.mp3");
+}
+
 function setup() {
   createCanvas(600, 400);
+  trilha.loop();
 }
 
 function draw() {
@@ -39,7 +51,7 @@ function draw() {
   verificaColisaoBorda();
   mostraRaquete(xRaquete, yRaquete);
   movimentaMinhaRaquete();
-  //verificaColisaoRaquete();
+  verificaColisaoRaquete();
   verificaColisaoRaquete(xRaquete, yRaquete);
   mostraRaquete(xRaqueteOponente, yRaqueteOponente);
   movimentaRaqueteOponente();
@@ -87,14 +99,15 @@ function verificaColisaoRaquete(){
       yBolinha - raio < yRaquete + raqueteAltura && 
       yBolinha + raio > yRaquete){
     velocidadeXBolinha *= -1;
+    raquetada.play();
   }
 }
 
 function verificaColisaoRaquete(x, y){
-  colidiu = collideRectCircle(x, y,raqueteComprimento,raqueteAltura,
-                              xBolinha,yBolinha,raio);
+  colidiu = collideRectCircle(x, y, raqueteComprimento, raqueteAltura, xBolinha, yBolinha, raio);
   if (colidiu){
     velocidadeXBolinha *= -1;
+    raquetada.play();
   }
 }
 
@@ -120,12 +133,10 @@ function incluiPlacar() {
 function marcaPonto(){
   if (xBolinha > 590){
     meusPontos += 1;
+    ponto.play();
   }
   if (xBolinha < 10){
     pontosDoOponente += 1;
+    ponto.play();
   }
 }
-
-
-
-
