@@ -111,9 +111,21 @@ function verificaColisaoRaquete(x, y){
   }
 }
 
+//Função para jogar contra a máquina
+//function movimentaRaqueteOponente(){
+  //velocidadeYOponente = yBolinha - yRaqueteOponente - raqueteComprimento / 2 - 30;
+  //yRaqueteOponente += velocidadeYOponente
+//}
+
+//Incluindo a função multiplayer
 function movimentaRaqueteOponente(){
-  velocidadeYOponente = yBolinha - yRaqueteOponente - raqueteComprimento / 2 - 30;
-  yRaqueteOponente += velocidadeYOponente
+  if (keyIsDown(UP_ARROW)){
+      yRaqueteOponente -= 10;
+  }
+  if (keyIsDown(DOWN_ARROW)){
+      yRaqueteOponente += 10;
+  }
+
 }
 
 function incluiPlacar() {
